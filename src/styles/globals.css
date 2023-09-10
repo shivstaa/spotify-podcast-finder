@@ -25,3 +25,30 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+@keyframes triangleMovement {
+  0% {
+    left: 0;
+    top: 0;
+  }
+  33% {
+    left: calc(100% - 150px);
+    top: 0;
+  }
+  66% {
+    left: 0;
+    top: calc(100% - 150px);
+  }
+  100% {
+    left: 0;
+    top: 0;
+  }
+}
+
+.animate-triangle {
+  animation: triangleMovement 5s infinite;
+}
+
+.h-25vh {
+  height: 25vh;
+}

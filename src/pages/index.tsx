@@ -9,20 +9,11 @@ const DynamicParticlesBg = dynamic(() => import("particles-bg"), {
   ssr: false,
 });
 
-var imageSet1: string[] = [];
-var imageSet2: string[] = [];
-var imageSet3: string[] = [];
+var imageSet: string[] = [];
 
-for (var i = 1; i <= 7; i++) {
-  imageSet1.push(`/podcast_image${i}.jpg`)
-}
 
-for (var i = 8; i <= 14; i++) {
-  imageSet2.push(`/podcast_image${i}.jpg`)
-}
-
-for (var i = 15; i <= 21; i++) {
-  imageSet3.push(`/podcast_image${i}.jpg`)
+for (var i = 1; i <= 21; i++) {
+  imageSet.push(`/podcast_image${i}.jpg`)
 }
 
 export default function Home() {
@@ -36,12 +27,11 @@ export default function Home() {
   linear-gradient(to bottom right, #000000, 25%, transparent),
   linear-gradient(to top right, #000000, 25%, transparent),
   linear-gradient(to top left, transparent 5%, #6B21A8, 80%, #000000)`,
-  // linear-gradient(to top left, transparent 5%, rgba(247,145,0,1), 80%, #000000)
   }}
 >
   <Navbar />
 
-  <section className="flex flex-row items-center justify-between mx-auto mb-8 md:mb-0 w-full h-80">
+  <section className="flex flex-row items-center justify-between mx-auto w-full  h-[50vh]">
     {/* Left side */}
     <div className="flex-grow mr-8 items-center text-center">
       {/* text-2xl sm:text-3xl md:text-4xl  */}
@@ -61,18 +51,45 @@ export default function Home() {
     </div>
 
     {/* Right side */}
-    <div className="">
+    <div className="flex flex-baseline">
       <div
-        className="relative w-72 h-72 rounded-full overflow-hidden"
+        className="relative rounded-full overflow-hidden"
       >
-        <Image src="/micImageCover.png" alt={"mic_img"} width={300} height={300} />
+        <Image src="/micImageCover.png" alt={"mic_img"} width={500} height={500} />
       </div>
     </div>
   </section>
 </div>
 
 
-      <hr className="bg-gray-500 h-1.5 rounded-md opacity-50 mx-auto" />
+      {/* <hr className="bg-gray-500 h-1.5 rounded-md opacity-50 mx-auto" /> */}
+
+      <section className="flex w-full h-[50vh] items-center bg-black"
+      style={{
+        backgroundImage: `
+        linear-gradient(to top left, #000000, 83%, transparent),
+        linear-gradient(to top right, #000000, 25%, transparent),
+        linear-gradient(to top left, transparent 25%, #6B21A8, 88%, #000000)`,
+  // linear-gradient(to top left, transparent 5%, rgba(247,145,0,1), 80%, #000000)
+  }}>
+        <div className="w-2/5 pl-12">
+          <ImageSlider rtl={false} images={imageSet.slice(0, 7)} />
+          <ImageSlider rtl={true} images={imageSet.slice(7, 14)} />
+          <ImageSlider rtl={false} images={imageSet.slice(14, 22)} />
+        </div>
+        <div className="w-3/5 px-8 flex flex-col text-left justify-center">
+          <h1 className="pb-8 text-5xl sm:text-6xl md:text-7xl font-bold leading-relaxed font-sans">
+            1000+ Podcasts to Search
+          </h1>
+          <p className="text-xl sm:text-2xl leading-10 font-serif">
+            From comedies, celebrity personalities, science & technology, to the
+            scariest horror stories!
+          </p>
+        </div>
+      </section>
+
+      <hr className="bg-gray-500 h-1.5 my-8 rounded-md opacity-50 mx-auto" />
+
 
       <section className="relative flex  w-full h-56 justify-center items-center">
         <div className="flex flex-col text-center justify-center z-10">
@@ -103,7 +120,7 @@ export default function Home() {
 
       <hr className="bg-gray-500 h-1.5 rounded-md opacity-50 mx-auto" />
 
-      <section className="flex mt-8 w-full h-80">
+      <section className="flex mt-8 w-full h-[35vh]">
         <div className="w-1/2 px-8 flex flex-col text-right justify-center">
           <h1 className="pb-8 text-5xl sm:text-6xl md:text-7xl font-bold leading-relaxed font-sans">
             1000+ Podcasts to Search
@@ -118,13 +135,13 @@ export default function Home() {
         </div>
       </section>
 
-      <hr className="bg-gray-500 h-1.5 my-8 rounded-md opacity-50 mx-auto" />
+      <hr className="bg-gray-500 h-1.5 rounded-md opacity-50 mx-auto" />
 
-      <section className="flex mt-8 w-full h-full">
+      {/* <section className="flex mt-8 w-full h-[50vh]">
         <div className="w-2/5 pl-12">
-          <ImageSlider rtl={false} images={imageSet1} />
-          <ImageSlider rtl={true} images={imageSet2} />
-          <ImageSlider rtl={false} images={imageSet3} />
+          <ImageSlider rtl={false} images={imageSet.slice(0, 7)} />
+          <ImageSlider rtl={true} images={imageSet.slice(7, 14)} />
+          <ImageSlider rtl={false} images={imageSet.slice(14, 22)} />
         </div>
         <div className="w-3/5 px-8 flex flex-col text-left justify-center">
           <h1 className="pb-8 text-5xl sm:text-6xl md:text-7xl font-bold leading-relaxed font-sans">
@@ -135,7 +152,7 @@ export default function Home() {
             scariest horror stories!
           </p>
         </div>
-      </section>
+      </section> */}
     </main>
   );
 }
